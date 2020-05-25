@@ -7,8 +7,8 @@ using System.Reflection;
 
 namespace СonveyoR
 {
-    public delegate IEnumerable<object> ServiceFactory(Type contextType, ProcessCase processCase, Type entityType,
-        Type payloadType = null);
+    public delegate IEnumerable<object> ServiceFactory(Type contextType, Type entityType,
+        Type payloadType = null, string processCase=null);
      
     public static class ServiceFactoryExtensions
     {
@@ -20,18 +20,18 @@ namespace СonveyoR
         }
 
         private static Type[] _allHandlerTypes;
-        public static IEnumerable<IProcessStepHandler<TContext>> GetInstances<TContext>(this ServiceFactory factory,
-            ProcessCase processCase, object entity, object payload = null)
+        public static IEnumerable<IProcessHandler<TContext>> GetInstances<TContext>(this ServiceFactory factory,
+            object entity, object payload = null, string processCase=null)
             where TContext : class
         {
 
-            var results = factory(typeof(TContext), processCase, entity.GetType(), payload?.GetType());
-            return results.Cast<IProcessStepHandler<TContext>>();
+            var results = factory(typeof(TContext), entity.GetType(), payload?.GetType(), processCase);
+            return results.Cast<IProcessHandler<TContext>>();
         }
 
-        public static Type[] GetProcessServiceTypes(Type contextType,ProcessCase processCase, Type entityType, Type payloadType = null)
+        public static Type[] GetProcessServiceTypes(Type contextType, Type entityType, Type payloadType = null, string processCase = null)
         {
-            var key = $"{contextType.Name}_{processCase:G}_{entityType.Name}_{(payloadType != null ? payloadType.Name : string.Empty) }";
+            var key = $"{contextType.Name}_{processCase}_{entityType.Name}_{(payloadType != null ? payloadType.Name : string.Empty) }";
 
             return HandlersPerContext.GetOrAdd(key, (strKey) =>
                 _allHandlerTypes.Where(p =>
@@ -48,9 +48,9 @@ namespace СonveyoR
             );
         }
 
-        private static ProcessOrderAttribute DefaultOrder(Type handlerType)
+        private static ProcessConfigAttribute DefaultOrder(Type handlerType)
         {
-            return handlerType.GetCustomAttribute<ProcessOrderAttribute>() ?? new ProcessOrderAttribute(ProcessCase.PreProcess, 0);
+            return handlerType.GetCustomAttribute<ProcessConfigAttribute>() ?? new ProcessConfigAttribute(null, 0);
         }
 
         #region InheritsOrImplements

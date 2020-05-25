@@ -11,9 +11,9 @@ namespace NUnitTest
         {
             ServiceFactoryExtensions.SetHandlerTypes(handlerTypes);
         }
-        public IEnumerable<object> GetServices(Type contextType, ProcessCase processCase, Type entityType, Type payloadType = null)
+        public IEnumerable<object> GetServices(Type contextType, Type entityType, Type payloadType = null, string processCase=null)
         {
-            var types = ServiceFactoryExtensions.GetProcessServiceTypes(contextType, processCase, entityType, payloadType);
+            var types = ServiceFactoryExtensions.GetProcessServiceTypes(contextType, entityType, payloadType, processCase);
 
             if(!types.Any())
                 yield break;

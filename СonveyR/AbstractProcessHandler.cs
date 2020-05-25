@@ -3,7 +3,7 @@
 namespace СonveyoR
 {
 
-    public abstract class ProcessStepHandler<TProcessContext, TEntity> : IProcessStepHandler<TProcessContext> where TProcessContext : class where TEntity : class
+    public abstract class AbstractProcessHandler<TProcessContext, TEntity> : IProcessHandler<TProcessContext> where TProcessContext : class where TEntity : class
     {
         public Task Process(TProcessContext context, params object[] args)
         {
@@ -14,7 +14,7 @@ namespace СonveyoR
 
     }
 
-    public abstract class ProcessStepHandler<TProcessContext, TEntity, TPayload> : IProcessStepHandler<TProcessContext> where TProcessContext : class where TEntity : class
+    public abstract class AbstractProcessHandler<TProcessContext, TEntity, TPayload> : IProcessHandler<TProcessContext> where TProcessContext : class where TEntity : class
     {
         public Task Process(TProcessContext context, params object[] args)
         {

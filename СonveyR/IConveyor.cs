@@ -8,7 +8,7 @@ namespace СonveyoR
 {
     public interface IConveyor
     {
-        Task Process<TContext>(TContext context,ProcessCase workflowCase, object entity, object payload = null,
+        Task Process<TContext>(TContext context, object entity, object payload = null, string workflowCase=null,
             CancellationToken cancellationToken = default)
             where TContext : class;
     }

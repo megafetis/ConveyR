@@ -7,10 +7,10 @@ using СonveyoR;
 
 namespace NUnitTest.Handlers
 {
-    [ProcessOrder(ProcessCase.PostProcess)]
-    class TimestampEntityPostHandler:ProcessStepHandler<ChangeEntityContext,ITimestampedEntity>
+    [ProcessConfig("after")]
+    class TimestampEntityPostHandler:AbstractProcessHandler<TestEntitiesStore,ITimestampedEntity>
     {
-        protected override Task Process(ChangeEntityContext context, ITimestampedEntity entity)
+        protected override Task Process(TestEntitiesStore context, ITimestampedEntity entity)
         {
             entity.Timestamp = DateTime.UtcNow;
             return Task.CompletedTask;

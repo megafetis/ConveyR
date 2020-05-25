@@ -32,7 +32,7 @@ namespace NUnitTest
             Assert.Null(entity.Id);
             Assert.Null(entity.Name);
             Assert.Null(entity.Description);
-            var changeContext = new ChangeEntityContext(_conveyor);
+            var changeContext = new TestEntitiesStore(_conveyor);
             
             await changeContext.ChangeEntity(entity, payload);
             
@@ -55,7 +55,7 @@ namespace NUnitTest
             Assert.Null(entity.Id);
             Assert.Null(entity.Name);
             Assert.Null(entity.Description);
-            var changeContext = new ChangeEntityContext(_conveyor);
+            var changeContext = new TestEntitiesStore(_conveyor);
 
             await changeContext.ChangeEntity(entity, payload);
 
@@ -83,7 +83,7 @@ namespace NUnitTest
             Assert.Null(entity.Id);
             Assert.Null(entity.Name);
             Assert.Null(entity.Description);
-            var changeContext = new ChangeEntityContext(_conveyor);
+            var changeContext = new TestEntitiesStore(_conveyor);
 
             try
             {
@@ -125,7 +125,7 @@ namespace NUnitTest
             Assert.Null(entity.Id);
             Assert.Null(entity.Name);
             Assert.Null(entity.Description);
-            var changeContext = new ChangeEntityContext(_conveyor);
+            var changeContext = new TestEntitiesStore(_conveyor);
 
             await changeContext.ChangeEntity(entity, payload);
 

@@ -7,10 +7,10 @@ using СonveyoR;
 
 namespace NUnitTest.Handlers
 {
-    [ProcessOrder(ProcessCase.RollbackProcess)]
-    class RollbackChangeHandler:ProcessStepHandler<ChangeEntityContext, IHasFaledCount>
+    [ProcessConfig("rollback")]
+    class RollbackChangeHandler:AbstractProcessHandler<TestEntitiesStore, IHasFaledCount>
     {
-        protected override Task Process(ChangeEntityContext context, IHasFaledCount entity)
+        protected override Task Process(TestEntitiesStore context, IHasFaledCount entity)
         {
             entity.FailCount++;
             return Task.CompletedTask;
