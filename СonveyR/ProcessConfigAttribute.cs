@@ -3,19 +3,18 @@
 
 namespace СonveyoR
 {
+    /// <summary>
+    /// Process config to set ordering and handling cases
+    /// </summary>
     public class ProcessConfigAttribute:Attribute
     {
-        public string ProcessCase { get; }
-        public int Order { get; }
         /// <summary>
-        /// Process config to set ordering and handling cases
+        /// Grouping of processes. Required if needed to create different cases of handling the same entity
         /// </summary>
-        /// <param name="processCase">Case of process. Required if needed to create different cases of handling the same entity</param>
-        /// <param name="order"></param>
-        public ProcessConfigAttribute(string processCase, int order = 0)
-        {
-            ProcessCase = processCase;
-            Order = order;
-        }
+        public string Group { get; set; } = null;
+        /// <summary>
+        /// Setting to specify order of execution handlers. Sort process handlers by Order
+        /// </summary>
+        public int Order { get; set; } = 0;
     }
 }

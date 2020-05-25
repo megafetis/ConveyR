@@ -29,9 +29,9 @@ namespace СonveyoR
             return results.Cast<IProcessHandler<TContext>>();
         }
 
-        public static Type[] GetProcessServiceTypes(Type contextType, Type entityType, Type payloadType = null, string processCase = null)
+        public static Type[] GetProcessServiceTypes(Type contextType, Type entityType, Type payloadType = null, string group = null)
         {
-            var key = $"{contextType.Name}_{processCase}_{entityType.Name}_{(payloadType != null ? payloadType.Name : string.Empty) }";
+            var key = $"{contextType.Name}_{group}_{entityType.Name}_{(payloadType != null ? payloadType.Name : string.Empty) }";
 
             return HandlersPerContext.GetOrAdd(key, (strKey) =>
                 _allHandlerTypes.Where(p =>
@@ -41,7 +41,7 @@ namespace СonveyoR
                                                                                                 p.BaseType.GetGenericArguments()[0] == contextType &&
                                                                                                 entityType.InheritsOrImplements(p.BaseType.GetGenericArguments()[1]) &&
                                                                                                 payloadType.InheritsOrImplements(p.BaseType.GetGenericArguments()[2])))
-                    && DefaultOrder(p).ProcessCase == processCase
+                    && DefaultOrder(p).Group == group
                     )
                     .OrderBy(p => DefaultOrder(p).Order)
                     .ToArray()
@@ -50,7 +50,7 @@ namespace СonveyoR
 
         private static ProcessConfigAttribute DefaultOrder(Type handlerType)
         {
-            return handlerType.GetCustomAttribute<ProcessConfigAttribute>() ?? new ProcessConfigAttribute(null, 0);
+            return handlerType.GetCustomAttribute<ProcessConfigAttribute>() ?? new ProcessConfigAttribute();
         }
 
         #region InheritsOrImplements
