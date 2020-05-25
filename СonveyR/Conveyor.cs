@@ -14,11 +14,11 @@ namespace СonveyoR
             _serviceFactory = serviceFactory;
         }
 
-        public async Task Process<TContext>(TContext context, object entity, object payload = null, string processCase=null, CancellationToken cancellationToken = default) 
+        public async Task Process<TContext>(TContext context, object entity, object payload = null, string group=null, CancellationToken cancellationToken = default) 
             where TContext : class
         {
             foreach (var service in _serviceFactory
-                .GetInstances<TContext>( entity, payload,processCase))
+                .GetInstances<TContext>( entity, payload, group))
             {
                 try
                 {
