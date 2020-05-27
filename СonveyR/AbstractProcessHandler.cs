@@ -12,7 +12,7 @@ namespace СonveyoR
     {
         public Task Process(TProcessContext context, object entity,object payload=null, CancellationToken cancellationToken = default)
         {
-            return Process(context, (TEntity)entity,null,cancellationToken);
+            return this.Process(context, (TEntity)entity,cancellationToken);
         }
 
         protected abstract Task Process(TProcessContext context, TEntity entity, CancellationToken cancellationToken = default);
