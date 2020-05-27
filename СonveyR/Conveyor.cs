@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -31,6 +32,11 @@ namespace СonveyoR
                     throw;
                 }
             }
+        }
+
+        public IEnumerable<IProcessHandler<TContext>> GetProcessHandlers<TContext>(object entity, object payload = null, string group = null) where TContext : class
+        {
+            return _serviceFactory.GetInstances<TContext>(entity, payload, group);
         }
     }
 }

@@ -11,6 +11,6 @@ namespace СonveyoR
     /// <typeparam name="TProcessContext"></typeparam>
     public interface IProcessHandler<in TProcessContext> where TProcessContext : class
     {
-        Task Process(TProcessContext context, params object[] args);
+        Task Process(TProcessContext context, object entitiy, object payload = null);
     }
 }
