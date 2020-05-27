@@ -24,7 +24,7 @@ namespace СonveyoR
                 try
                 {
                     if(!cancellationToken.IsCancellationRequested)
-                        await service.Process(context, entity, payload);
+                        await service.Process(context, entity, payload, cancellationToken);
                 }
                 catch (Exception e)
                 {

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace СonveyoR
 {
@@ -9,12 +10,12 @@ namespace СonveyoR
     /// <typeparam name="TEntity">Entity to handle</typeparam>
     public abstract class AbstractProcessHandler<TProcessContext, TEntity> : IProcessHandler<TProcessContext> where TProcessContext : class where TEntity : class
     {
-        public Task Process(TProcessContext context, object entity,object payload=null)
+        public Task Process(TProcessContext context, object entity,object payload=null, CancellationToken cancellationToken = default)
         {
-            return Process(context, (TEntity)entity);
+            return Process(context, (TEntity)entity,null,cancellationToken);
         }
 
-        protected abstract Task Process(TProcessContext context, TEntity entity);
+        protected abstract Task Process(TProcessContext context, TEntity entity, CancellationToken cancellationToken = default);
 
     }
     /// <summary>
@@ -25,12 +26,12 @@ namespace СonveyoR
     /// <typeparam name="TPayload">Payload object</typeparam>
     public abstract class AbstractProcessHandler<TProcessContext, TEntity, TPayload> : IProcessHandler<TProcessContext> where TProcessContext : class where TEntity : class
     {
-        public Task Process(TProcessContext context, object entity, object payload = null)
+        public Task Process(TProcessContext context, object entity, object payload = null, CancellationToken cancellationToken = default)
         {
-            return Process(context, (TEntity)entity, (TPayload)payload);
+            return Process(context, (TEntity)entity, (TPayload)payload, cancellationToken);
         }
 
-        protected abstract Task Process(TProcessContext context, TEntity entity, TPayload payload);
+        protected abstract Task Process(TProcessContext context, TEntity entity, TPayload payload, CancellationToken cancellationToken = default);
 
     }
 }

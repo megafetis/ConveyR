@@ -7,8 +7,8 @@
     <RepositoryUrl>https://github.com/megafetis/ConveyR</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Conveyor, Conveyr, Saga, Mediator, chain responsability pattern</PackageTags>
-    <PackageIcon>logo.png</PackageIcon>
     <Description>Library implements  chain responsability pattern or saga pattern. It improves code reuse in many cases/</Description>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,5 +17,6 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+
 
 </Project>

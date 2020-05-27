@@ -17,6 +17,14 @@ namespace NUnitTest
             await _conveyor.Process(this, entity, payload);
         }
 
+        public async Task ChangeEntityManual(IEntity entity, object payload)
+        {
+            foreach (var processHandler in _conveyor.GetProcessHandlers<TestEntitiesStore>(entity,payload))
+            {
+                await processHandler.Process(this, entity, payload);
+            }
+        }
+
         public async Task AfterChangeEntity(IEntity entity, object payload = null)
         {
             await _conveyor.Process(this, entity, payload,"after");

@@ -134,5 +134,29 @@ namespace NUnitTest
             Assert.Null(entity.Description);
 
         }
+
+        [Test]
+        public async Task EntitiyHandlersList()
+        {
+            var entity = new TestEntity();
+            var payload = new ChangeTestEntityPayload()
+            {
+                Name = "Name 1",
+                Description = "Description 1"
+            };
+
+            Assert.Null(entity.Id);
+            Assert.Null(entity.Name);
+            Assert.Null(entity.Description);
+            var changeContext = new TestEntitiesStore(_conveyor);
+
+            await changeContext.ChangeEntityManual(entity, payload);
+
+            Assert.AreEqual("Name 1", entity.Name);
+            Assert.NotNull(entity.Description);
+            Assert.NotNull(entity.Id);
+            
+
+        }
     }
 }
