@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "СonveyR", "СonveyR\СonveyR.csproj", "{E19450DC-F5BD-48DF-BCF2-81AC289DF9E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConveyR", "СonveyR\ConveyR.csproj", "{E19450DC-F5BD-48DF-BCF2-81AC289DF9E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTest", "NUnitTest\NUnitTest.csproj", "{09A2179B-37B3-4F68-B7D9-21C49BD0DDBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTest", "NUnitTest\NUnitTest.csproj", "{09A2179B-37B3-4F68-B7D9-21C49BD0DDBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

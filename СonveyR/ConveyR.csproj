@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.1.1</Version>
+    <AssemblyName>ConveyR</AssemblyName>
+    <PackageId>ConveyR</PackageId>
+    <Version>1.1.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/megafetis/ConveyR</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Conveyor, Conveyr, Saga, Mediator, chain responsability pattern</PackageTags>
-    <Description>Library implements  chain responsability pattern or saga pattern. It improves code reuse in many cases/</Description>
+    <Title>ConveyR</Title>
+    <Description>Library implements  chain responsability pattern or saga pattern. It improves code reuse in many cases</Description>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
