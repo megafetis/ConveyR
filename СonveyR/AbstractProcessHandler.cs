@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace СonveyoR
+namespace ConveyR
 {
     /// <summary>
     /// Abstract handler class for comfortable creating of your own handlers

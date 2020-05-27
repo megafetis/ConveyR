@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-
-namespace СonveyoR
+namespace ConveyR
 {
     public delegate IEnumerable<object> ServiceFactory(Type contextType, Type entityType,
         Type payloadType = null, string processCase=null);

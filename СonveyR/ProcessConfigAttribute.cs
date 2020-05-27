@@ -1,7 +1,6 @@
 ﻿using System;
 
-
-namespace СonveyoR
+namespace ConveyR
 {
     /// <summary>
     /// Process config to set ordering and handling cases
