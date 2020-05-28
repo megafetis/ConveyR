@@ -167,7 +167,24 @@ store.AddOrSaveEntity(entity2,payload);
 
 ```
 
-To register handlers you can use DI container or implement some simple ``ServiceFactory``:
+To register handlers you can use DI container:
+
+```cs
+
+var services = new ServiceCollection();
+services.AddConveyR();
+var provider = services.BuildServiceProvider();
+
+```
+...
+
+```cs 
+
+var conveyor = _serviceProvider.GetService<IConveyor>();
+// ...
+
+```
+or implement some simple ``ServiceFactory``
 
 ```cs
 public class SimpleServiceFactory
@@ -200,24 +217,9 @@ var myStore = new MyStore(conveyor);
 ```
 With DI Microsoft.DependencyInjection:
 
-```cs
-
-var services = new ServiceCollection();
-services.AddConveyR();
-var provider = services.BuildServiceProvider();
 
 
-```
-...
-
-```cs 
-
-var conveyor = _serviceProvider.GetService<IConveyor>();
-// ...
-
-```
-
-You can lable handlers to split them into groups and manage ordering of handling:
+##### You can lable handlers to split them into groups and manage ordering of handling:
 
 ```cs
 
