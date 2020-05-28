@@ -151,7 +151,19 @@ class MyStore
     }
 }
 
+//...
 
+var store = new MyStore(_conveyor);
+var entity = new EntityClass1();
+var entity2 = new EntityClass1();
+var payload = new EditEntityModel1()
+{
+    Name = "Name 1",
+    Description = "Description 1",
+}
+
+store.AddOrSaveEntity(entity,payload);
+store.AddOrSaveEntity(entity2,payload);
 
 ```
 
