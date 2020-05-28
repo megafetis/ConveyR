@@ -15,7 +15,7 @@
     <Title>ConveyR</Title>
     <Description>Library implements  chain responsability pattern or saga pattern. It improves code reuse in many cases</Description>
     <PackageIcon>logo.png</PackageIcon>
-    <Author>Evgeniy Fetisov</Author>
+    <Authors>Evgeniy Fetisov</Authors>
   </PropertyGroup>
 
   <ItemGroup>
