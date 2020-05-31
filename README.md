@@ -25,9 +25,9 @@ Lib contains:
 * IProcessHandler and AbstractProcessHandler to define handlers
 * delegate ServiceFactory to connect with any DI containers. [Extensions for Microsoft.DependencyInjection](https://www.nuget.org/packages/ConveyR.Extensions.Microsoft.DependencyInjection/)
 
-##### Common usage (Example):
+### Common usage (Example):
 
-Yuo have some classes with common interfaces
+### Define your domain classes and interfaces:
 
 ```cs 
 public class EntityClass1: IEntity, IHasNaming, IHasDescription
@@ -44,7 +44,7 @@ public class EntityClass2: IEntity, IHasNaming
 }
 
 ```
-common interfaces
+
 ```cs
 
 interface IEntity
@@ -63,7 +63,7 @@ interface IHasDescription
 }
 ```
 
-To edit entities you have some DTO classes
+### Define DTO domain model classes:
 
 ```cs
 
@@ -85,7 +85,7 @@ class EditEntityModel1: IHasNamingPayload,IHasDescriptionPayload
 
 ```
 
-Define handlers for edit entities
+### Define Handlers from ``AbstractProcessHandler<,>`` or ``IProcessHandler<,>``:
 
 ```cs
 
@@ -131,6 +131,8 @@ class ChangeDescriptionHandler: AbstractProcessHandler<MyStore, IHasDescription,
 
 
 ```
+### Start processing in your store or controller:
+
 ``MyStore `` is some class, where may be started handling.
 
 
@@ -219,7 +221,7 @@ With DI Microsoft.DependencyInjection:
 
 
 
-##### You can lable handlers to split them into groups and manage ordering of handling:
+#### You can lable handlers to split them into groups and manage ordering of handling:
 
 ```cs
 
