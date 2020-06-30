@@ -21,9 +21,9 @@ Or via the .NET Core command line interface:
 
 Use this library to define handlers once and use them to handle different objects with shared interfaces or shared base classes.
 Lib contains:
-* IConveyor interface to use as entry point to handle
-* IProcessHandler and AbstractProcessHandler to define handlers
-* delegate ServiceFactory to connect with any DI containers. [Extensions for Microsoft.DependencyInjection](https://www.nuget.org/packages/ConveyR.Extensions.Microsoft.DependencyInjection/)
+* `IConveyor` interface to use as entry point to handle
+* `IProcessHandler` and `AbstractProcessHandler` to define handlers
+* delegate `ServiceFactory` for connecting with any DI containers. [Extensions for Microsoft.DependencyInjection](https://www.nuget.org/packages/ConveyR.Extensions.Microsoft.DependencyInjection/)
 
 ### Common usage (Example):
 
