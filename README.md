@@ -7,6 +7,8 @@ Simple implementation of conveyor handling  in .NET.
 The library takes code reuse to a new level.
 In-process object handling with no dependencies.
 
+## Automatic implementation of pattern "Builder"
+
 Define process handlers with your business objects in C#. Synchronous and async with intelligent dispatching via C# generic variance.
 
 ### Installing ConveyR
