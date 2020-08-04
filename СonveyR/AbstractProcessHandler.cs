@@ -15,7 +15,7 @@ namespace ConveyR
             return this.Process(context, (TEntity)entity,cancellationToken);
         }
 
-        protected abstract Task Process(TProcessContext context, TEntity entity, CancellationToken cancellationToken = default);
+        protected abstract Task Process(TProcessContext context, TEntity entity, CancellationToken cancellationToken);
 
     }
     /// <summary>
@@ -31,7 +31,7 @@ namespace ConveyR
             return Process(context, (TEntity)entity, (TPayload)payload, cancellationToken);
         }
 
-        protected abstract Task Process(TProcessContext context, TEntity entity, TPayload payload, CancellationToken cancellationToken = default);
+        protected abstract Task Process(TProcessContext context, TEntity entity, TPayload payload, CancellationToken cancellationToken);
 
     }
 }
