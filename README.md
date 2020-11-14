@@ -223,7 +223,7 @@ With DI Microsoft.DependencyInjection:
 
 
 
-#### You can lable handlers to split them into groups and manage ordering of handling:
+#### You can label handlers to split them into groups and manage ordering of handling:
 
 ```cs
 
