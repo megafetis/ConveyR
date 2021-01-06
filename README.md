@@ -262,3 +262,5 @@ class MyStore
 }
 
 ```
+
+Please give a star if the library is useful for you :smiley:
