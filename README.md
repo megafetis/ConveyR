@@ -1,4 +1,4 @@
-# ConveyR
+# ConveyR - Handling of business objects by shared interfaces
 =======
 [![NuGet](https://img.shields.io/nuget/dt/ConveyR.svg)](https://www.nuget.org/packages/ConveyR/) 
 [![NuGet](https://img.shields.io/nuget/vpre/ConveyR.svg)](https://www.nuget.org/packages/ConveyR/)
@@ -7,9 +7,10 @@ Simple implementation of conveyor handling  in .NET.
 The library takes code reuse to a new level.
 In-process object handling with no dependencies.
 
-## Automatic implementation of pattern "Builder"
+## Conveyor handling of business objects:
 
-Define process handlers with your business objects in C#. Synchronous and async with intelligent dispatching via C# generic variance.
+Write your `AbstractProcessHandler<SomeContext,ISomeInterface,ISomePayload>` business-logic handlers for every business interfaces. Optionally you can pass interfaces for payload too.
+Run conveyor to handle each business object of several classes, if they have a common interfaces.
 
 ### Installing ConveyR
 
