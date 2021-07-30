@@ -36,13 +36,14 @@ namespace ConveyR
 
             return HandlersPerContext.GetOrAdd(key, (strKey) =>
                 _allHandlerTypes.Where(p =>
-                    ((p.BaseType.GetGenericArguments().Length == 2 &&
-                      p.BaseType.GetGenericArguments()[0] == contextType &&
-                      entityType.InheritsOrImplements(p.BaseType.GetGenericArguments()[1])) || (payloadType != null && p.BaseType.GetGenericArguments().Length == 3 &&
-                                                                                                p.BaseType.GetGenericArguments()[0] == contextType &&
-                                                                                                entityType.InheritsOrImplements(p.BaseType.GetGenericArguments()[1]) &&
-                                                                                                payloadType.InheritsOrImplements(p.BaseType.GetGenericArguments()[2])))
-                    && DefaultOrder(p).Group == group
+                        contextType.InheritsOrImplements(p.BaseType.GetGenericArguments()[0]) && DefaultOrder(p).Group == group &&
+                    (
+                        // Two generic arguments
+                        (p.BaseType.GetGenericArguments().Length == 2 && entityType.InheritsOrImplements(p.BaseType.GetGenericArguments()[1]))
+                        ||
+                        // Three generic arguments
+                        (payloadType != null && p.BaseType.GetGenericArguments().Length == 3 && entityType.InheritsOrImplements(p.BaseType.GetGenericArguments()[1]) && payloadType.InheritsOrImplements(p.BaseType.GetGenericArguments()[2]))
+                        )
                     )
                     .OrderBy(p => DefaultOrder(p).Order)
                     .ToArray()

@@ -6,7 +6,7 @@
     <Copyright>Copyright Evgeniy Fetisov</Copyright>
     <PackageLicenseUrl>https://github.com/megafetis/ConveyR/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageId>ConveyR</PackageId>
-    <Version>1.1.5</Version>
+    <Version>1.1.6</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>git://github.com/megafetis/ConveyR</RepositoryUrl>
     <PackageProjectUrl>https://github.com/megafetis/ConveyR</PackageProjectUrl>
