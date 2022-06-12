@@ -38,5 +38,10 @@ namespace ConveyR
         {
             return _serviceFactory.GetInstances<TContext>(entity, payload, group);
         }
+
+        public IEnumerable<IProcessHandler<TContext>> GetProcessHandlersByType<TContext>(Type entityType, Type payloadType = null, string group = null) where TContext : class
+        {
+            return _serviceFactory.GetInstances<TContext>(entityType, payloadType, group);
+        }
     }
 }

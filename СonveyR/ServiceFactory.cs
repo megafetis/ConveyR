@@ -25,8 +25,14 @@ namespace ConveyR
             object entity, object payload = null, string processCase=null)
             where TContext : class
         {
-
             var results = factory(typeof(TContext), entity.GetType(), payload?.GetType(), processCase);
+            return results.Cast<IProcessHandler<TContext>>();
+        }
+        public static IEnumerable<IProcessHandler<TContext>> GetInstances<TContext>(this ServiceFactory factory,
+            Type entityType, Type payloadType = null, string processCase=null)
+            where TContext : class
+        {
+            var results = factory(typeof(TContext), entityType, payloadType, processCase);
             return results.Cast<IProcessHandler<TContext>>();
         }
 
@@ -37,22 +43,21 @@ namespace ConveyR
             return HandlersPerContext.GetOrAdd(key, (strKey) =>
                 _allHandlerTypes.Where(p =>
                         contextType.InheritsOrImplements(p.BaseType.GetGenericArguments()[0]) && DefaultOrder(p).Group == group &&
-                    (
+                        (
                         // Two generic arguments
                         (p.BaseType.GetGenericArguments().Length == 2 && entityType.InheritsOrImplements(p.BaseType.GetGenericArguments()[1]))
                         ||
                         // Three generic arguments
                         (payloadType != null && p.BaseType.GetGenericArguments().Length == 3 && entityType.InheritsOrImplements(p.BaseType.GetGenericArguments()[1]) && payloadType.InheritsOrImplements(p.BaseType.GetGenericArguments()[2]))
                         )
-                    )
-                    .OrderBy(p => DefaultOrder(p).Order)
-                    .ToArray()
+                    ).OrderBy(p => DefaultOrder(p).Order).ToArray()
             );
         }
 
+        private static ProcessConfigAttribute _defaultAttr = new ProcessConfigAttribute();
         private static ProcessConfigAttribute DefaultOrder(Type handlerType)
         {
-            return handlerType.GetCustomAttribute<ProcessConfigAttribute>() ?? new ProcessConfigAttribute();
+            return handlerType.GetCustomAttribute<ProcessConfigAttribute>() ?? _defaultAttr;
         }
 
     }

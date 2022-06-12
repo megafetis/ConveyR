@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace ConveyR
         /// <typeparam name="TContext">Class of context object</typeparam>
         /// <param name="context">Context is an any object that plays the role of a data processing context. For most cases pass "this" reference of your custom repo class</param>
         /// <param name="entity">An Object to process</param>
-        /// <param name="payload">optional objet, that contains required data for entity object</param>
+        /// <param name="payload">optional object, that contains required data for entity object</param>
         /// <param name="group">Specifying a group name to tell, what group of handlers to use. Most cases: before commit, after commit, rollback handlers</param>
         /// <param name="cancellationToken">token</param>
         /// <returns>Task</returns>
@@ -28,10 +29,21 @@ namespace ConveyR
         /// </summary>
         /// <typeparam name="TContext">Type of handler context object</typeparam>
         /// <param name="entity">An Object to process</param>
-        /// <param name="payload">optional objet, that contains required data for entity object</param>
+        /// <param name="payload">optional object, that contains required data for entity object</param>
         /// <param name="group">Specifying a group name to tell, what group of handlers to use. Most cases: before commit, after commit, rollback handlers</param>
-        /// <returns>Collection of handlers IProcessHandler<TContext></returns>
+        /// <returns>Collection of handlers IProcessHandler</returns>
         IEnumerable<IProcessHandler<TContext>> GetProcessHandlers<TContext>(object entity,
             object payload = null, string group = null) where TContext : class;
+
+        /// <summary>
+        /// Get process handlers for call each of them manually.
+        /// </summary>
+        /// <typeparam name="TContext">Type of handler context object</typeparam>
+        /// <param name="entityType">A type of Object to process</param>
+        /// <param name="payloadType">optional object, that contains required data for entity object</param>
+        /// <param name="group">Specifying a group name to tell, what group of handlers to use. Most cases: before commit, after commit, rollback handlers</param>
+        /// <returns>Collection of handlers IProcessHandler</returns>
+        IEnumerable<IProcessHandler<TContext>> GetProcessHandlersByType<TContext>(Type entityType,
+            Type payloadType = null, string group = null) where TContext : class;
     }
 }
